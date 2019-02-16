@@ -37,14 +37,19 @@ battery_percent=$(("$battery_level * 100"))
 battery_percent=$(("$battery_percent / $battery_max"))
 
 if [ "$ac" -eq 1 ]; then
-    icon="#1"
+    icon=""
+    num_spaces=$((5-${#battery_percent}))
+    spacing=$(printf "%*s%s" $num_spaces)
 
     if [ "$battery_percent" -gt 97 ]; then
         echo "$icon"
     else
-        echo "$icon $battery_percent %"
+        echo "$icon$spacing$battery_percent%"
     fi
 else
+    num_spaces=$((4-${#battery_percent}))
+    spacing=$(printf "%*s%s" $num_spaces)
+
     if [ "$battery_percent" -gt 85 ]; then
         icon=""
     elif [ "$battery_percent" -gt 60 ]; then
@@ -57,5 +62,5 @@ else
         icon=""
     fi
 
-    echo "$icon $battery_percent%"
+    echo "$icon$spacing$battery_percent%"
 fi

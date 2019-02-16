@@ -12,19 +12,19 @@ for element in "${arr[@]}"
 do
     element_mult=$(($element * 4))
     if [ "$element_mult" -lt $((warn_temp*1)) ]; then
-        output="$output %{F#06d6a0}%{F-} $element°C"
+        output="$output%{F#06d6a0}%{F-} $element°C "
 
     elif [ "$element_mult" -lt $((warn_temp * 2)) ]; then
-        output="$output %{F#bbff3d}%{F-} $element°C"
+        output="$output%{F#bbff3d}%{F-} $element°C "
 
     elif [ "$element_mult" -lt $((warn_temp * 3)) ]; then
-        output="$output %{F#ffc43d}%{F-} $element°C"
+        output="$output%{F#ffc43d}%{F-} $element°C "
 
     elif [ "$element_mult" -lt $((warn_temp * 4)) ]; then
-        output="$output %{F#ff7a3d}%{F-} $element°C"    
+        output="$output%{F#ff7a3d}%{F-} $element°C "    
     else
-        output="$output %{F#ef476f}%{F-} $element°C"
+        output="$output%{F#ef476f}%{F-} $element°C "
     fi
 done
 
-echo "$output"
+echo "${output::-1}"
