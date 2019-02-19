@@ -1,207 +1,104 @@
 [bar/top]
 monitor = eDP-1
-font-0 = FontAwesome5Free:style=Solid:pixelsize=11
-font-1 = LiberationMono-Bold:style=Bold
-modules-left = ewmh bspwm
-; modules-center = 
-modules-right = wireless-network backlight date battery pulseaudio
-;format-temperature-padding = 10
-module-margin = 10
+font-0 = FontAwesome5Free:style=Solid:pixelsize=11;-2
+#font-1 = LiberationMono-Bold:style=Bold
+font-1 = Inconsolata:size=13:style=Bold;-2
+modules-left = battery cpu temperature
+modules-center = bspwm
+modules-right = pulseaudio backlight
+; padding-right = 10
+module-margin = 2
+; scroll-up = bspwm-desknext
+; scroll-down = bspwm-deskprev
+line-size = 3
+background = #00000000
+;background-0 = #ff555555
+;background-1 = #00000000
+width = 1896
+offset-x = 12
 
-[module/bspwm]
-type = internal/bspwm
-
-ws-icon-0 = term;
-ws-icon-1 = web;
-ws-icon-2 = code;
-ws-icon-3 = music;
-ws-icon-4 = irssi;
-ws-icon-default = 
-
-format = <label-state> <label-mode>
-
-label-dimmed-underline = #000
-
-label-active = %icon%
-label-active-foreground = #fff
-label-active-background = #773f3f3f
-label-active-underline = #c9665e
-label-active-font = 4
-label-active-padding = 4
-
-label-occupied = %icon%
-label-occupied-foreground = #dd
-label-occupied-underline = #666
-label-occupied-font = 4
-label-occupied-padding = 4
-
-label-urgent = %icon%
-label-urgent-foreground = #000000
-label-urgent-background = #bd2c40
-label-urgent-underline = #9b0a20
-label-urgent-font = 4
-label-urgent-padding = 4
-
-label-empty = %icon%
-label-empty-foreground = #55
-label-empty-font = 4
-label-empty-padding = 4
-
-label-monocle = 
-label-monocle-underline = #000
-label-monocle-background = #33ffffff
-label-monocle-padding = 2
-
-label-locked = 
-label-locked-foreground = #bd2c40
-label-locked-underline = #000
-label-locked-padding = #000
-
-label-sticky = 
-label-sticky-foreground = #fba922
-label-sticky-underline = ${module/bspwm.label-monocle-underline}
-label-sticky-padding = ${module/bspwm.label-monocle-padding}
-
-label-private = 
-label-private-foreground = #bd2c40
-label-private-underline = ${module/bspwm.label-monocle-underline}
-label-private-padding = ${module/bspwm.label-monocle-padding}
-
-
-[module/ewmh]
-type = internal/xworkspaces
-enable-click = true
-enable-scroll = false
-
-; Formatting
-; icon-[0-9]+ = <desktop-name>;<icon>
-; NOTE: The desktop name needs to match the name configured by the WM
-; You can get a list of the defined desktops using:
-; $ xprop -root _NET_DESKTOP_NAMES
-icon-0 = 1
-icon-1 = 2
-icon-2 = 3
-icon-default = 
-
-; Available tags:
-;   <label-monitor>
-;   <label-state> - gets replaced with <label-(active|urgent|occupied|empty)>
-; Default: <label-state>
-format = <label-state>
-
-; Available tokens:
-;   %name%
-; Default: %name%
-label-monitor = %name%
-
-; Available tokens:
-;   %name%
-;   %icon%
-;   %index%
-; Default: %icon%  %name%
-label-active = %icon% %index% 
-label-active-foreground = #000
-label-active-background = #fff
-label-active-margin = 1
-;label-active-overline = ${colors.foreground}
-
-; Available tokens:
-;   %name%
-;   %icon%
-;   %index%
-; Default: %icon%  %name%
-label-occupied = %index%
-label-occupied-underline = #555555
-
-; Available tokens:
-;   %name%
-;   %icon%
-;   %index%
-; Default: %icon%  %name%
-label-urgent = %icon%
-label-urgent-foreground = #000000
-label-urgent-background = #bd2c40
-label-urgent-underline = #9b0a20
-
-; Available tokens:
-;   %name%
-;   %icon%
-;   %index%
-; Default: %icon%  %name%
-label-empty =
-label-empty-foreground = #666
-
-[module/menu-apps]
-type = custom/menu
-
-label-open = Apps
-label-close = x
-; If true, <label-toggle> will be to the left of the menu items (default).
-; If false, it will be on the right of all the items.
-expand-right = true
-
-; "menu-LEVEL-N" has the same properties as "label-NAME" with
-; the additional "exec" property
-;
-; Available exec commands:
-;   menu-open-LEVEL
-;   menu-close
-; Other commands will be executed using "/usr/bin/env sh -c $COMMAND"
-
-menu-0-0 = Firefox
-menu-0-0-exec = firefox &
-
-; [module/mpd]
-; type = internal/mpd
-; format-online = <icon-prev> <icon-stop> <toggle> <icon-next>  <icon-repeat> <icon-random>  <bar-progress> <label-time>  <label-song>
-
-; Host where mpd is running (either ip or domain name)
-; Can also be the full path to a unix socket where mpd is running.
-; host = 127.0.0.1
-; port = 6600
-; password = 
-
-; Seconds to sleep between progressbar/song timer sync
-; Default: 1
-; interval = 1
-
-; icon-play = 
-; icon-pause = 
-; icon-stop = 
-; icon-prev = 
-; icon-next = 
-; icon-random = 
-; icon-repeat = 
-
-; toggle-on-foreground = 9
-; toggle-off-foreground = #55
-
-; bar-progress-width = 30
-; bar-progress-format = %{A4:mpdseek+2: A5:mpdseek-2:}%fill%%indicator%%empty%%{A A}
-; bar-progress-indicator = |
-; bar-progress-indicator-foreground = #ff
-; bar-progress-indicator-font = 3
-; bar-progress-fill = ─
-; bar-progress-fill-foreground = #bb
-; bar-progress-fill-font = 3
-; bar-progress-empty = ─
-; bar-progress-empty-font = 3
-; bar-progress-empty-foreground = #44
 
 [bar/bottom]
 monitor = eDP-1
 bottom = true
-font-0 = FontAwesome5Free:style=Solid:pixelsize=11
-font-1 = LiberationMono-Bold:style=Bold
-modules-left = message
-; modules-center = 
-modules-right = temperature cpu
+font-0 = FontAwesome5Free:style=Solid:pixelsize=11;-2
+;font-1 = LiberationMono-Bold:style=Bold
+;font-1 = Roboto Slab:style=Bold
+font-1 = Inconsolata:size=13:style=Bold
+modules-left = wireless-network
+modules-center = date
+modules-right = powermenu
 module-margin = 10
+background = #00000000
+width = 1896
+offset-x = 12
+
+[module/powermenu]
+type = custom/text
+content = 
+click-left = "xfce4-session-logout"
+
+[module/bspwm]
+type = internal/bspwm
+
+; Only show workspaces defined on the same output as the bar
+; NOTE: The bspwm and XRandR monitor names must match, which they do by default.
+; Default: true
+pin-workspaces = true
+
+; Output mode flags after focused state label
+; Default: false
+inline-mode = false
+
+; Create click handler used to focus workspace
+; Default: true
+enable-click = true
+
+; Create scroll handlers used to cycle workspaces
+; Default: true
+enable-scroll = false
+
+; Use fuzzy (partial) matching on labels when assigning 
+; icons to workspaces
+; Example: code;♚ will apply the icon to all workspaces 
+; containing 'code' in the label
+; Default: false
+fuzzy-match = true
+
+label-focused = 
+label-occupied = _
+label-empty = _
+
+label-focused-padding = 1
+label-occupied-padding = 1
+label-empty-padding = 1
+
+; ws-icon-[0-9]+ = label;icon
+; Note that the label needs to correspond with the bspwm workspace name
+;ws-icon-0 = 1;1
+;ws-icon-1 = 2;2
+;ws-icon-2 = 3;3
+;ws-icon-3 = 4;4
+;ws-icon-4 = 5;5
+;ws-icon-default = F
+
+; Available tags:
+;   <label-monitor>
+;   <label-state> - gets replaced with <label-(focused|urgent|occupied|empty)>
+;   <label-mode> - gets replaced with <label-(monocle|tiled|fullscreen|floating|locked|sticky|private)>
+; Default: <label-state>
+format = <label-state> <label-mode>
+
+
 
 [module/temperature]
 type = custom/script
-exec = ~/polybar-scripts/system-cpu-temppercore-with-icons.sh
+exec = ~/code/dotfiles/polybar-scripts/cpu-core-temps.sh
 interval = 1
+format = <label>
+format-underline = #f26419
+; format-padding = 0
+label = %output%
 
 [module/cpu]
 type = internal/cpu
@@ -212,31 +109,37 @@ interval = 0.5
 ;   <bar-load>
 ;   <ramp-load>
 ;   <ramp-coreload>
-format = <label>
+format = <ramp-load><label>
+format-underline = #33658a
+; format-padding = 2
 
 ; Available tokens:
 ;   %percentage% (default) - total cpu load averaged over all cores
 ;   %percentage-sum% - Cumulative load on all cores
 ;   %percentage-cores% - load percentage for each core
 ;   %percentage-core[1-9]% - load percentage for specific core
-label = CPU %percentage%%
+label = %percentage:4%%
 
-;ramp-0 = 
-;ramp-1 = 
-;ramp-2 = 
-;ramp-3 = 
-;ramp-foreground = #ef476f
+ramp-load-0 = 
+ramp-load-foreground = #33658a
 
 
 [module/backlight]
 type = internal/backlight
 card = intel_backlight
 
-format = <label>
+format = <ramp><label>
 
 ; Available tokens:
 ;   %percentage% (default)
-label = %percentage%%
+label = %percentage:4%%
+label-underline = #86bbd8
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-foreground = #86bbd8
+ramp-underline = #86bbd8
 
 [module/message]
 type = custom/text
@@ -244,11 +147,12 @@ content = In the darkest times, hope is something you give yourself. That is the
 
 [module/date]
 type = internal/date
-date = %Y-%m-%d %I:%M %p
+date =  %b %d – %A
+time =  %l:%M %p
 
-date-alt = %A, %d %B %Y %I:%M %p
-
-label = %date% %time%
+format = <label>
+label = %time%
+time-alt =  %b %d – %A
 
 [module/wireless-network]
 type = internal/network
@@ -256,24 +160,41 @@ interface = wlp4s0
 interval = 3.0
 ping-interval = 10
 
-format-connected = <ramp-signal> <label-connected>
-label-connected = %essid%
-label-disconnected =    not connected
+format-connected = %{A1:~/code/dotfiles/polybar-scripts/toggle-nmtui.sh:}<ramp-signal><label-connected>%{A}
+;format-connected-underline = #86bbd8
+
+label-connected = %essid% (%local_ip%)
+;label-connected-underline = #86bbd8
+
+label-disconnected =   not connected
+;label-disconnected-underline = #86bbd8
 label-disconnected-foreground = #66
 
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
-ramp-signal-5 = 
+ramp-signal-0 = %{F#cc0e0e}%{F-}
+ramp-signal-1 = %{F#ff5d00}%{F-}
+ramp-signal-2 = %{F#ffe123}%{F-}
+ramp-signal-3 = %{F#daff49}%{F-}
+ramp-signal-4 = %{F#abe83a}%{F-}
+ramp-signal-5 = %{F#537a00}%{F-}
+
+ramp-signal-underline = #86bbd8
+ramp-signal-padding-right = 1
+
+;click-left = xfce4-terminal;~/code/dotfiles/polybar-scripts/open-wifi-applet.sh
+
 
 [module/battery]
 type = custom/script
-exec = ~/polybar-scripts/battery-combined-shell.sh
+exec = ~/code/dotfiles/polybar-scripts/battery-combined-shell.sh
 interval = 10
+click-left = ~/code/dotfiles/polybar-scripts/battery-state-alternator.sh
 
-click-left = ~/polybar-scripts/battery-state-alternator.sh
+format = <label>
+format-padding = 0
+format-underline = #f6ae2d
+label = %output:7%
+
+
 
 [module/pulseaudio]
 type = internal/pulseaudio
@@ -294,7 +215,10 @@ interval = 5
 ;   <label-volume> (default)
 ;   <ramp-volume>
 ;   <bar-volume>
-format-volume = <bar-volume> <label-volume>
+format-volume = <ramp-volume><label-volume>
+format-volume-padding = 0
+format-volume-spacing = 0
+format-volume-underline = #86bbd8
 
 ; Available tags:
 ;   <label-muted> (default)
@@ -304,7 +228,7 @@ format-volume = <bar-volume> <label-volume>
 
 ; Available tokens:
 ;   %percentage% (default)
-;label-volume = %percentage%%
+label-volume = %percentage:4%%
 
 ; Available tokens:
 ;   %percentage% (default)
@@ -315,38 +239,4 @@ label-muted-foreground = #666
 ramp-volume-0 = 
 ramp-volume-1 = 
 ramp-volume-2 = 
-
-bar-volume-width = 10
-bar-volume-indicator = 
-bar-volume-fill = =
-bar-volume-empty = -
-
-
-[module/network]
-type = internal/network
-interface = wlan1
-
-; Seconds to sleep between updates
-; Default: 1
-interval = 3.0
-
-; Test connectivity every Nth update
-; A value of 0 disables the feature
-; NOTE: Experimental (needs more testing)
-; Default: 0
-;ping-interval = 3
-
-; @deprecated: Define min width using token specifiers (%downspeed:min% and %upspeed:min%)
-; Minimum output width of upload/download rate
-; Default: 3
-udspeed-minwidth = 5
-
-; Accumulate values from all interfaces
-; when querying for up/downspeed rate
-; Default: false
-accumulate-stats = true
-
-; Consider an `UNKNOWN` interface state as up.
-; Some devices have an unknown state, even when they're running
-; Default: false
-unknown-as-up = true
+ramp-volume-foreground = #86bbd8

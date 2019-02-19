@@ -40,12 +40,7 @@ if [ "$ac" -eq 1 ]; then
     icon=""
     num_spaces=$((5-${#battery_percent}))
     spacing=$(printf "%*s%s" $num_spaces)
-
-    if [ "$battery_percent" -gt 97 ]; then
-        echo "$icon"
-    else
-        echo "$icon$spacing$battery_percent%"
-    fi
+    echo "%{F#f6ae2d}$icon%{F-}$spacing$battery_percent%"
 else
     num_spaces=$((4-${#battery_percent}))
     spacing=$(printf "%*s%s" $num_spaces)
@@ -62,5 +57,5 @@ else
         icon=""
     fi
 
-    echo "$icon$spacing$battery_percent%"
+    echo "%{F#f6ae2d}$icon%{F-}$spacing$battery_percent%"
 fi
